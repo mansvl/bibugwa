@@ -1,52 +1,54 @@
 {
-  "name": "Biji-Bot",
-  "version": "1.0.0",
-  "description": "Bot for whatsapp online with termux",
+  "name": "BI-BOT",
+  "version": "9.9.9",
+  "description": "No comment",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "node index"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [
-    "k"
+    "Zitstaa",
+    "whatsapp",
+    "bot",
+    "whatsapp",
+    "bot"
   ],
-  "author": "Taufik - Kun",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/affisjunianto/botwasapv2.git"
-  },
-  "bugs": {
-    "url": "https://github.com/affisjunianto/botwasapv2/issues"
-  },
-  "homepage": "https://github.com/affisjunianto/botwasapv2/readme",
+  "author": "Nastarr",
   "license": "ISC",
   "dependencies": {
-    "@adiwajshing/baileys": "^3.3.0",
-    "async": "^2.4.1",
-    "axios": "^0.21.0",
-    "brainly-scraper": "^1.0.3",
+    "@adiwajshing/baileys": "^3.4.1",
+    "async": "^3.2.0",
+    "awesome-phonenumber": "^2.49.0",
+    "axios": "^0.21.1",
     "cfonts": "^2.9.0",
-    "dotenv": "^8.2.0",
-    "escape-string-regexp": "^1.0.5",
+    "escape-string-regexp": "^4.0.0",
     "fake-useragent": "^1.0.1",
+    "ffmpeg": "0.0.4",
+    "file-type": "^16.2.0",
     "fluent-ffmpeg": "^2.1.2",
-    "got": "^11.8.1",
-    "image-to-base64": "^2.1.1",
-    "imgbb-uploader": "file:imgbb-uploader",
+    "image-to-base64": "^2.2.0",
+    "imgbb-uploader": "^1.3.0",
+    "lolis.life": "^4.0.0",
     "moment-timezone": "^0.5.32",
-    "multistream": "^2.1.0",
-    "needle": "^2.5.2",
+    "multistream": "^4.0.1",
     "node-fetch": "^2.6.1",
-    "node-gtts": "^2.0.2",
-    "node-tesseract-ocr": "^2.0.0",
-    "performance-now": "^2.1.0",
-    "qrcode-terminal": "^0.12.0",
+    "parse-ms": "^2.1.0",
     "remove.bg": "^1.3.0",
-    "request": "^2.81.0",
+    "request": "^2.88.2",
     "spinnies": "^0.5.1",
     "tiktok-scraper": "^1.4.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zitsraaaxyz/self-wabot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zitsraaaxyz/self-wabot/issues"
+  },
+  "homepage": "https://github.com/Zitsraaaxyz/self-wabot#readme"
 }
