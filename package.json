@@ -1,0 +1,32 @@
+{
+  "name": "virtexwa",
+  "version": "1.6.9",
+  "description": "Bug Whatsapp By Nastarr",
+  "main": "index.js",
+  "dependencies": {
+    "@adiwajshing/baileys": "^3.4.1",
+    "axios": "^0.21.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "node-fetch": "^2.6.1",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nastarrr/bibugwa.git"
+  },
+  "keywords": [
+    "virtex",
+    "ganas"
+  ],
+  "author": "Biji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nastarrr"
+  },
+  "homepage": "https://github.com/nastarrr"
+}
