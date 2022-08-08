@@ -42,6 +42,7 @@
     "spinnies": "^0.5.1",
     "tiktok-scraper": "^1.4.7"
   },
+
   "devDependencies": {},
   "repository": {
     "type": "git",
